@@ -1,0 +1,4 @@
+.sidebar #dock #links{background:none;padding-top:5px;position:relative;width:40px;height:30px;}
+.sidebar #dock{background-color:#373a47;}
+.sidebar #dock #links .sidebar-icon{width:30px;height:30px;padding:0 5px;}
+.sidebar #dock #links .sidebar-icon p{border-bottom:3px solid #fff;}

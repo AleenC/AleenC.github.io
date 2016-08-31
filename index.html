@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="JS代码,侧边菜单,拉出菜单,高级菜单,导航菜单,jquery菜单" />
-    <meta name="description" content="jQuery高级可停靠侧边栏，jquery实现的高级侧边导航菜单效果，更多侧边菜单,拉出菜单,高级菜单,导航菜单,jquery菜单请访问柯乐义JS代码频道。" />
+    <meta name="keywords" content="js作品展示" />
+    <meta name="description" content="js作品展示" />
     <title>技术作品展示</title>
     <link type="text/css" rel="stylesheet" href="stylesheets/main.css">
 </head>
@@ -22,21 +22,21 @@
                     <a href="#" class="undock">隐藏</a>链接
                 </li>
                 <li id="demo-list-0">雪花</li>
-                <li id="demo-list-1">demo1</li>
-                <li id="demo-list-2">demo1</li>
+                <li id="demo-list-1">canvas效果</li>
+                <li id="demo-list-2">动态打印乘法表</li>
                 <li id="demo-list-3">demo1</li>
-                <li id="demo-list-4">demo1</li>
-                <li id="demo-list-5">demo1</li>
-                <li id="demo-list-6">demo1</li>
-                <li id="demo-list-7">demo1</li>
-                <li id="demo-list-8">demo1</li>
-                <li id="demo-list-9">demo1</li>
-                <li id="demo-list-10">demo1</li>
-                <li id="demo-list-11">demo1</li>
-                <li id="demo-list-12">demo1</li>
-                <li id="demo-list-13">demo1</li>
-                <li id="demo-list-14">demo1</li>
-                <li id="demo-list-15">demo1</li>
+                <li id="demo-list-4">demo2</li>
+                <li id="demo-list-5">demo3</li>
+                <li id="demo-list-6">demo4</li>
+                <li id="demo-list-7">demo5</li>
+                <li id="demo-list-8">demo6</li>
+                <li id="demo-list-9">demo7</li>
+                <li id="demo-list-10">demo8</li>
+                <li id="demo-list-11">demo9</li>
+                <li id="demo-list-12">demo10</li>
+                <li id="demo-list-13">demo11</li>
+                <li id="demo-list-14">demo12</li>
+                <li id="demo-list-15">demo13</li>
             </ul>
         </li>
     </ul>
@@ -44,69 +44,5 @@
 <iframe id="showBox"></iframe>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="js/index.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var docked = 0;
-
-        $("#dock li ul").height($(window).height());
-
-        $("#dock .dock-keleyi-com").click(function () {
-            $(this).parent().parent().addClass("docked").removeClass("free");
-
-            docked += 1;
-            var dockH = ($(window).height()) / docked
-            var dockT = 0;
-
-            $("#dock li ul.docked").each(function () {
-                $(this).height(dockH).css("top", dockT + "px");
-                dockT += dockH;
-            });
-            $(this).parent().find(".undock").show();
-            $(this).hide();
-
-            if (docked > 0)
-                $("#content").css("margin-left", "250px");
-            else
-                $("#content").css("margin-left", "60px");
-        });
-
-        $("#dock .undock").click(function () {
-            $(this).parent().parent().addClass("free").removeClass("docked")
-                    .animate({ left: "-180px" }, 200).height($(window).height()).css("top", "0px");
-
-            docked = docked - 1;
-            var dockH = ($(window).height()) / docked
-            var dockT = 0;
-
-            $("#dock li ul.docked").each(function () {
-                $(this).height(dockH).css("top", dockT + "px");
-                dockT += dockH;
-            });
-            $(this).parent().find(".dock-keleyi-com").show();
-            $(this).hide();
-
-            if (docked > 0)
-                $("#content").css("margin-left", "250px");
-            else
-                $("#content").css("margin-left", "60px");
-        });
-
-        $("#dock li").hover(function () {
-            $(this).find("ul").animate({ left: "40px" }, 200);
-        }, function () {
-            $(this).find("ul.free").animate({ left: "-180px" }, 200);
-        });
-
-        $("#dock #links .free li:not('.header,#demo-list-0')").click(function(){
-            alert('正在加班中!....');
-        });
-
-        var doc = $(document);
-        var showBox = $('#showBox');
-        doc.on('click', '#demo-list-0', function(){
-               showBox.attr('src', 'demos/snow.html');
-        })
-    });
-</script>
 </body>
 </html>

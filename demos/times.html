@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>动态乘法表</title>
+</head>
+<body>
+<script>
+    (function(){
+        timesTable(); //乘法表显示和隐藏一次；
+
+        setInterval(function(){ //定义一个定时器 10S 循环一次timesTable函数；
+            timesTable();
+        }, 10000)
+
+        function timesTable(){
+            var arr = [];
+            for(var i = 1; i <=9; i++){
+                for(var j = 1; j <= i; j++){
+                    /*debugger;*/
+                    if( i == j ){
+                        arr.push("<span class='item' style='border:1px solid #ccc;'>" + i + '*' + j + '='+ i*j + "</span>" + "<br/>");
+                    }else{
+                        arr.push("<span class='item' style='border:1px solid #ccc;'>" + i + '*' + j + '='+ i*j + ' ' + "</span>");
+                    }
+                }
+            }
+            var number = 0;
+            var timer = setInterval(function(){
+                if(number < arr.length){  //控制乘法表的显示
+                    document.write(arr[number]);
+                    number++;
+                }else{
+                    clearInterval(timer);
+                    var eles = document.getElementsByClassName('item');
+                    var numberLast = eles.length - 1;
+                    var timer2 = setInterval(function(){ //控制乘法表的隐藏
+                        if(numberLast >= 0){
+                            eles[numberLast].parentNode.removeChild(eles[numberLast]);
+                            numberLast--;
+                        }else{
+                            clearInterval(timer2);
+                            document.body.innerHTML = '';
+                        }
+                    }, 100)
+                }
+            }, 100)
+        }
+    })()
+</script>
+</body>
+</html>

@@ -21,27 +21,29 @@
                     <a href="#" class="dock-keleyi-com">固定</a>
                     <a href="#" class="undock">隐藏</a>链接
                 </li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#" >demo1</a></li>
-                <li><a href="#">demo1</a></li>
-                <li><a href="#">demo1</a></li>
+                <li id="demo-list-0">雪花</li>
+                <li id="demo-list-1">demo1</li>
+                <li id="demo-list-2">demo1</li>
+                <li id="demo-list-3">demo1</li>
+                <li id="demo-list-4">demo1</li>
+                <li id="demo-list-5">demo1</li>
+                <li id="demo-list-6">demo1</li>
+                <li id="demo-list-7">demo1</li>
+                <li id="demo-list-8">demo1</li>
+                <li id="demo-list-9">demo1</li>
+                <li id="demo-list-10">demo1</li>
+                <li id="demo-list-11">demo1</li>
+                <li id="demo-list-12">demo1</li>
+                <li id="demo-list-13">demo1</li>
+                <li id="demo-list-14">demo1</li>
+                <li id="demo-list-15">demo1</li>
             </ul>
         </li>
     </ul>
 </div>
+<iframe id="showBox"></iframe>
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="js/index.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         var docked = 0;
@@ -95,8 +97,14 @@
             $(this).find("ul.free").animate({ left: "-180px" }, 200);
         });
 
-        $("#dock #links .free li:not('.header')").click(function(){
+        $("#dock #links .free li:not('.header,#demo-list-0')").click(function(){
             alert('正在加班中!....');
+        });
+
+        var doc = $(document);
+        var showBox = $('#showBox');
+        doc.on('click', '#demo-list-0', function(){
+               showBox.attr('src', 'demos/snow.html');
         })
     });
 </script>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片轮播</title>
+    <style type="text/css">
+        *{margin:0;padding:0;background:#fff;}
+        ul,li{list-style:none;}
+        a{text-decoration:none;}
+        .wrap{width:600px;height:300px;margin:10px auto;border:1px solid red;}
+        .inner{padding:15px;}
+        .clearfix{overflow:hidden;_zoom:1;}
+        .nav li{float:left;padding:10px 30px;background:#f1f1f1;color:#000;cursor:pointer;transition:all 0.5s linear;}
+        .nav li.on{background:#c40000;color:#fff;}
+        .photo{float:left;width:430px;overflow:hidden;}
+        .photo img{width:430px;}
+        .part{width:10000px;}
+        .side{float:right;width:140px;}
+        .link{float:left;}
+        .bar li{height:40px;line-height:40px;text-indent:2em;background:#f7f7f7;border-bottom:1px solid #ccc;cursor:pointer;transition:all 0.5s linear;}
+        .bar li.on{background:#333;color:#fff;}
+        .none{display:none;}
+    </style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <div class="inner">
+        <div class="title">
+            <ul class="nav clearfix">
+                <li class="on">精品女装</li>
+                <li>唯美女装</li>
+            </ul>
+        </div>
+        <div class="main clearfix">
+            <div class="items">
+                <div class="photo">
+                    <div class="part">
+                        <a href="#" class="link"><img src="../images/01.jpg" alt="img"></a>
+                        <a href="#" class="link"><img src="../images/02.jpg" alt="img"></a>
+                        <a href="#" class="link"><img src="../images/03.jpg" alt="img"></a>
+                    </div>
+                </div>
+                <div class="side">
+                    <ul class="bar">
+                        <li class="on">精品系列1</li>
+                        <li>精品系列2</li>
+                        <li>精品系列3</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="items none">
+                <div class="photo">
+                    <div class="part">
+                        <a href="#" class="link"><img src="../images/04.jpg" alt="img"></a>
+                        <a href="#" class="link"><img src="../images/05.jpg" alt="img"></a>
+                        <a href="#" class="link"><img src="../images/06.jpg" alt="img"></a>
+                    </div>
+                </div>
+                <div class="side">
+                    <ul class="bar">
+                        <li class="on">唯美系列1</li>
+                        <li>唯美系列2</li>
+                        <li>唯美系列3</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function(){
+        var li = document.querySelectorAll('.nav li'),
+                len = li.length,
+                link = document.querySelectorAll('.link'),
+                aLen = link.length,
+                bar = document.querySelectorAll('.bar li'),
+                barLen = bar.length,
+                items = document.querySelectorAll('.items');
+        //顶部按钮函数
+        function tab(index){
+            for(var i = 0; i < len; i++){
+                li[i].classList.remove('on');
+                items[i].style.display = 'none';
+            }
+            li[index].style.display = 'block';
+            li[index].classList.add('on');
+            items[index].style.display = 'block';
+        }
+        //图片和侧边栏函数
+        function tabBar(index){
+            for(var i = 0; i < barLen; i++){
+                bar[i].classList.remove('on');
+                link[i].style.display = 'none';
+            }
+            bar[index].style.display = 'block';
+            bar[index].classList.add('on');
+            link[index].style.display = 'block';
+            link[index].classList.add('on');
+        }
+        var cur = 0, barCur = 0;
+        //循环处理函数（定时器）
+        function change(){
+            var timer = setInterval(function(){
+                if(barCur >= (barLen - 1)){
+                    barCur = 0;
+                }else{
+                    barCur++;
+                }
+                if(barCur % 3 == 0 ){
+                    if(cur >= len - 1){
+                        cur = 0;
+                    }else{
+                        cur++;
+                    }
+                    tab(cur);
+                }
+                tabBar(barCur);
+            }, 1500)
+        }
+
+        change();
+    })();
+</script>
+</body>
+</html>

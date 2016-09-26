@@ -1,0 +1,41 @@
+*{margin:0;padding:0}
+html{font:normal 62.5% Tahoma,Microsoft yahei,Arial,Helvetica,sans-serif;}
+html,body{height: 100%;}
+body,div,address,blockquote,iframe,ul,ol,dl,dt,dd,li,dl,h1,h2,h3,h4,h5,h6,p,pre,table,caption,th,td,form,legend,fieldset,input,button,select,textarea{margin:0;padding:0;font-weight:normal;font-style:normal;}
+body{height:100%;font-size:1.4rem;overflow-x:hidden;-webkit-overflow-scrolling:touch;background:#f3f3f3;color:#333;}
+ol,ul,li{list-style:none;}
+img{border:0;font-size:0;margin:0;padding:0;outline:none;vertical-align:middle;}
+.clear{clear:both;}
+.clearfix:after{clear:both;content:".";display:block;height:0pt;visibility:hidden;overflow:hidden;}
+a{text-decoration:none;color:#666;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+a:link,a:visited,a:hover,a:active{color:#666;text-decoration:none;}
+input{outline:none;vertical-align:middle;}
+*{text-shadow:none}
+i,em{font-style:normal;}
+input:focus::-webkit-input-placeholder {color: transparent;}
+.ellipsis,.ell{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.none{display:none;}
+.tc{text-align:center;}
+.swipe{overflow:hidden;visibility:hidden;position:relative;}
+.swipe-wrap{overflow:hidden;position:relative;}
+.swipe-wrap > div{float:left;width:100%;position:relative;}
+.pagination{position:absolute;z-index:120;left:40%;bottom:10px;}
+.swiper-pagination-switch{display:inline-block;width:9px;height:9px;border-radius:8px;background:#fff;margin-right:5px;opacity:0.9;cursor:pointer;}
+.swiper-active-switch{background:#1d9fa6;}
+.blue{color:#09f;}
+.user-select{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;}
+#wrapper{position:relative;margin:30px auto;width:960px;height:420px;}
+#banner{position:relative;width:960px;height:420px;overflow:hidden;}
+.imgList{position:relative;width:10000px;height:420px;z-index:10;overflow:hidden;}
+.imgList li{float:left;display:inline;}
+#prev,#next{position:absolute;top:150px;z-index:20;cursor:pointer;opacity:0.2;filter:alpha(opacity=20);}
+#prev{left:10px;}
+#next{right:10px;}
+#prev:hover,#next:hover{opacity:0.5;filter:alpha(opacity=50);}
+#footer-bj{position:absolute;bottom:0;width:960px;height:40px;z-index:20;opacity:0.4;filter:alpha(opacity=40);background:black;}
+.infoList{position:absolute;left:10px;bottom:10px;z-index:30;}
+.infoList li{display:none;}
+.infoList .infoOn{display:inline;color:white;}
+.indexList{position:absolute;right:10px;bottom:5px;z-index:50;}
+.indexList li{float:left;margin-left:5px;padding:2px 4px;border:2px solid black;background:grey;cursor:pointer;}
+.indexList .indexOn{background:red;font-weight:bold;color:white;}

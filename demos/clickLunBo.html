@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击图片轮播</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/clickLunBo.css">
+</head>
+<body>
+<div id="wrapper">
+    <div id="banner">
+        <ul class="imgList">
+            <li><a href="javascript:;"><img src="../images/01.jpg" width="960px" height="420px" alt="img-info"></a></li>
+            <li><a href="javascript:;"><img src="../images/02.jpg" width="960px" height="420px" alt="img-info"></a></li>
+            <li><a href="javascript:;"><img src="../images/03.jpg" width="960px" height="420px" alt="img-info"></a></li>
+            <li><a href="javascript:;"><img src="../images/04.jpg" width="960px" height="420px" alt="img-info"></a></li>
+        </ul>
+        <img src="../images/btn_prev.png" widht="100px" heihgt="100px" alt="btn-info" id="prev">
+        <img src="../images/btn_next.png" widht="100px" heihgt="100px" alt="btn-info" id="next">
+        <div id="footer-bj"></div>
+        <ul class="infoList">
+            <li class="infoOn">boots1</li>
+            <li>boots2</li>
+            <li>boots3</li>
+            <li>boots4</li>
+        </ul>
+        <ul class="indexList">
+            <li class="indexOn">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script>
+    $(function(){
+        var curIndex = 0,
+                imgLen = $('.imgList li').length;
+        var autoChange = setInterval(function(){
+            if(curIndex < imgLen - 1){
+                curIndex++;
+            }else{
+                curIndex = 0;
+            }
+            changeTo(curIndex);
+        },2500);
+
+        //prev
+        $('#prev').hover(function(){
+            clearInterval(autoChange);
+        },function(){
+            autoChangeAgain();
+        });
+        $('#prev').click(function(){
+            curIndex = (curIndex > 0) ? (--curIndex) : (imgLen - 1);
+            changeTo(curIndex);
+        });
+
+        //next
+        $('#next').hover(function(){
+            clearInterval(autoChange);
+        },function(){
+            autoChangeAgain();
+        });
+        $('#next').click(function(){
+            curIndex = (curIndex < (imgLen - 1)) ? (++curIndex) : 0;
+            changeTo(curIndex);
+        });
+
+        //indexList
+        $('.indexList').find('li').each(function(item){
+            $(this).hover(function(){
+                clearInterval(autoChange);
+                changeTo(item);
+                curIndex = item;
+            },function(){
+                autoChangeAgain();
+            });
+        });
+
+        function autoChangeAgain(){
+            autoChange = setInterval(function(){
+                if(curIndex < imgLen - 1){
+                    curIndex++;
+                }else{
+                    curIndex = 0;
+                }
+            }, 2500)
+        }
+
+        function changeTo(num){
+            var goLeft = num * 960;
+            $('.imgList').animate({left : '-' + goLeft + 'px'}, 800);
+            $('.infoList').find('li').removeClass('infoOn').eq(num).addClass('infoOn'); //先重置class然后根据传进来的num确定一个li加infoOn
+            $('.indexList').find('li').removeClass('indexOn').eq(num).addClass('indexOn');
+        }
+    });
+</script>
+</body>
+</html>

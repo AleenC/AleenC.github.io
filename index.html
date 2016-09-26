@@ -1,48 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="JS作品展示" />
-    <meta name="description" content="JS作品展示" />
-    <title>技术作品展示</title>
-    <link type="text/css" rel="stylesheet" href="stylesheets/main.css">
+    <meta charset="UTF-8">
+    <title>前端作品列表</title>
+    <style>
+        body{margin:0;padding:0;background:#efefda;}
+        .main{width:500px;margin:20px auto 0;padding:40px 20px;}
+        a{text-decoration:none;padding:5px 8px;display:block;transition:all 0.6s;color:#0080ff;font-size:18px;font-style:normal;font-family:"Hiragino Sans GB","Hiragino Sans GB W3","微软雅黑";}
+        a:hover{background:#00b271;color:#fff;display:block;}
+        ol li{list-style:none;border-bottom:1px solid #f2f2f2;}
+        .sub-dl{display:none;}
+        h2{font-size:22px;font-style:normal;font-family:"Hiragino Sans GB","Hiragino Sans GB W3","微软雅黑";}
+        .wrap{border:1px solid #fff;padding:20px;border-radius:5px;background:#fff;opacity:0.7;}
+    </style>
 </head>
 <body>
-<div class="sidebar">
-    <ul id="dock">
-        <li id="links">
-            <div class="sidebar-icon">
-                <p></p>
-                <p></p>
-                <p></p>
-            </div>
-            <ul class="free">
-                <li class="header">
-                    <a href="#" class="dock-keleyi-com">固定</a>
-                    <a href="#" class="undock">隐藏</a>链接
-                </li>
-                <li id="demo-list-0">雪花</li>
-                <li id="demo-list-1">canvas时钟</li>
-                <li id="demo-list-2">动态打印乘法表</li>
-                <li id="demo-list-3">demo1</li>
-                <li id="demo-list-4">demo1</li>
-                <li id="demo-list-5">demo1</li>
-                <li id="demo-list-6">demo1</li>
-                <li id="demo-list-7">demo1</li>
-                <li id="demo-list-8">demo1</li>
-                <li id="demo-list-9">demo1</li>
-                <li id="demo-list-10">demo1</li>
-                <li id="demo-list-11">demo1</li>
-                <li id="demo-list-12">demo1</li>
-                <li id="demo-list-13">demo1</li>
-                <li id="demo-list-14">demo1</li>
-                <li id="demo-list-15">demo1</li>
-            </ul>
-        </li>
-    </ul>
+<div class="main">
+    <div class="wrap shadow">
+        <ol id="ol"></ol>
+    </div>
 </div>
-<iframe id="showBox"></iframe>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script>
+    (function(){
+        var str = '',
+                data = [
+                    [
+                        {title : '第一章 图片轮播'},
+                        {url : 'demos/imgLunBo.html', title : '图片自动轮播'},
+                        {url : 'demos/clickLunBo.html', title : '图片点击轮播'},
+                        {url : '#', title : 'testInfo'}
+                    ],
+                    [
+                        {title : '第二章 css样式案例'},
+                        {url : '#', title : 'testInfo'}
+                    ],
+                    [
+                        {title : '第三章 javascript案例'},
+                        {url : '#', title : 'testFore'}
+                    ],
+                    [
+                        {title : '第四章 javascript案例'},
+                        {url : '#', title : 'testFore'}
+                    ],
+                    [
+                        {title : '第五章 javascript案例'},
+                        {url : '#', title : 'testFore'}
+                    ],
+                    [
+                        {title : '第六章 javascript案例'},
+                        {url : '#', title : 'testFore'}
+                    ],
+                    [
+                        {title : '第七章 javascript案例'},
+                        {url : '#', title : 'testFore'}
+                    ]
+                ];
+        for(var i = 0; i < data.length; i++){
+            var items = data[i];
+            var sub = '';
+            for(var j = 0; j < items.length; j++){
+                var son = items[j];
+                debugger;
+                if(j ==0){
+                    sub += '<li><h1><a href="javascript:;" title="'+ son.title +'">'+ son.title +'</a></h1><dl class="sub-dl">';
+                }else{
+                    sub += '<dd><a href="'+ son.url +'" target="_blank" title="'+ son.title +'">' + son.title +'</a></dd>';
+                }
+                if(j == items.length - 1){
+                    sub += '</dl></li>';
+                }
+            }
+            str += sub;
+        }
+        var ol = document.getElementById('ol');
+        ol.innerHTML = str;
+        var h1 = ol.getElementsByTagName('h1');
+        var dl = ol.getElementsByTagName('dl');
+        var tmp = -1;
+        var open = false;
+        for(var i = 0; i < h1.length; i++){
+            h1[i].index = i;
+            h1[i].onclick = function(){
+                for(var i = 0; i < h1.length; i++){
+                    dl[i].style.display = 'none';
+                }
+                if(tmp == this.index && open){
+                    dl[this.index].style.display = 'none';
+                    open = false;
+                }else{
+                    dl[this.index].style.display = 'block';
+                    open = true;
+                }
+                tmp = this.index;
+            }
+        }
+    })();
+</script>
 </body>
 </html>

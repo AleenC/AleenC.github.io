@@ -4,23 +4,21 @@
     <meta charset="UTF-8">
     <title>前端作品列表</title>
     <link rel="shortcut  icon" type="image/x-icon" href="favicon.ico" media="screen"/>
-    <style>
-        body{margin:0;padding:0;background:#efefda;}
-        .main{width:500px;margin:20px auto 0;padding:40px 20px;}
-        a{text-decoration:none;padding:5px 8px;display:block;transition:all 0.6s;color:#0080ff;font-size:18px;font-style:normal;font-family:"Hiragino Sans GB","Hiragino Sans GB W3","微软雅黑";}
-        a:hover{background:#00b271;color:#fff;display:block;}
-        ol li{list-style:none;border-bottom:1px solid #f2f2f2;}
-        .sub-dl{display:none;}
-        h2{font-size:22px;font-style:normal;font-family:"Hiragino Sans GB","Hiragino Sans GB W3","微软雅黑";}
-        .wrap{border:1px solid #fff;padding:20px;border-radius:5px;background:#fff;opacity:0.7;}
-    </style>
+    <link rel="stylesheet" href="stylesheets/main/index.css">
 </head>
 <body>
 <div class="main">
     <div class="wrap shadow">
         <ol id="ol"></ol>
     </div>
+    <div class="leftTime">
+        <iframe src="demos/canvas.html" width="400" height="350" frameborder="false" scrolling="no" style="border:none;" allowtransparency="true"></iframe>
+        <p id="getTime"></p>
+        <p id="weather"></p>
+        <p id="getWorkDay"></p>
+    </div>
 </div>
+<script src="js/jquery.min.js"></script>
 <script>
     (function(){
         var str = '',
@@ -28,16 +26,15 @@
                     [
                         {title : '第一章 图片轮播'},
                         {url : 'demos/imgLunBo.html', title : '图片自动轮播'},
-                        {url : 'demos/clickLunBo.html', title : '图片点击轮播'},
-                        {url : '#', title : 'testInfo'}
+                        {url : 'demos/clickLunBo.html', title : '图片点击轮播'}
                     ],
                     [
                         {title : '第二章 css样式案例'},
-                        {url : '#', title : 'testInfo'}
+                        {url : 'demos/snow.html', title : '雪花效果'}
                     ],
                     [
                         {title : '第三章 javascript案例'},
-                        {url : '#', title : 'testFore'}
+                        {url : 'demos/times.html', title : '九九乘法表打印'}
                     ],
                     [
                         {title : '第四章 vue.js案例'},
@@ -64,7 +61,7 @@
                 if(j ==0){
                     sub += '<li><h1><a href="javascript:;" title="'+ son.title +'">'+ son.title +'</a></h1><dl class="sub-dl">';
                 }else{
-                    sub += '<dd><a href="'+ son.url +'" target="_blank" title="'+ son.title +'">' + son.title +'</a></dd>';
+                    sub += '<dd><a href="'+ son.url +'" title="'+ son.title +'">' + son.title +'</a></dd>';
                 }
                 if(j == items.length - 1){
                     sub += '</dl></li>';
@@ -93,8 +90,73 @@
                 }
                 tmp = this.index;
             }
+        };
+        getTime();
+        swithDay();
+        findWeather();
+        function getTime(){
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var getTimes = year + '年' + month + '月' + day +'日' + '-' + hours + ':' + minutes;
+            $('#getTime').text(getTimes);
+        };
+        function swithDay() {
+            var date = new Date().getDay();
+            switch (date){
+                case 0:
+                    info = '今天是周日';
+                    break;
+                case 1:
+                    info = '今天是周一';
+                    break;
+                case 2:
+                    info = '今天是周二';
+                    break;
+                case 3:
+                    info = '今天是周三';
+                    break;
+                case 4:
+                    info = '今天是周四';
+                    break;
+                case 5:
+                    info = '今天是周五';
+                    break;
+                case 6:
+                    info = '今天是周六';
+                    break;
+            };
+            $('#getWorkDay').text(info);
+        };
+        function findWeather() {
+            var cityUrl = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js';
+            $.getScript(cityUrl, function(script, textStatus, jqXHR) {
+                var citytq = remote_ip_info.city ;// 获取城市
+                var url = "http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&city=" + citytq + "&day=0&dfc=3";
+                $.ajax({
+                    url : url,
+                    dataType : "script",
+                    scriptCharset : "gbk",
+                    success : function(data) {
+                        var _w = window.SWther.w[citytq][0];
+                        var _f= _w.f1+"_0.png";
+                        if(new Date().getHours() > 17){
+                            _f= _w.f2+"_1.png";
+                        }
+                        var img = "<img width='16px' height='16px' src='http://i2.sinaimg.cn/dy/main/weather/weatherplugin/wthIco/20_20/" +_f
+                                + "' />";
+                        var tq = citytq + " " + img + " " + _w.s1 + " " + _w.t1 + "℃～" + _w.t2 + "℃  " + _w.d1 + _w.p1 + "级";
+                        //#weather自己修改,天气样式自己打断点调试
+                        $('#weather').html(tq);
+                    }
+                });
+            });
         }
     })();
+
 </script>
 </body>
 </html>

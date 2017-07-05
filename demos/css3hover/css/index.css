@@ -1,0 +1,113 @@
+bady{
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+	color: #b3b9bf;
+	background: #f9f9f9;
+}
+a {
+	color: #888;
+	text-decoration: none;
+}
+a:hover,
+a:active {
+	color: #333;
+}
+ul li{
+	list-style: none;
+}
+.container{
+	margin: 0 auto;
+	text-align: center;
+}
+.gird{
+	padding: 20px 20px 100px 20px;
+	max-width: 1300px;
+	margin: 0 auto;
+	list-style: none;
+	text-align: center;
+}
+.gird li{
+	display: inline-block;
+	width: 440px;
+	margin: 0;
+	padding: 20px;
+	text-align: left;
+	position: relative;
+}
+.gird figure{
+	margin: 0;
+	position: relative;
+}
+.gird figure img{
+	max-width: 100%;
+	display: block;
+	position: relative;
+}
+.gird figcaption{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 20px;
+	background: #2c3f52;
+	color: #ed4e6e;
+}
+.gird figcaption h3{
+	margin: 0;
+	padding: 0;
+	color: #fff;
+}
+.gird figcaption span:before{
+	content: 'by';
+}
+.gird figcaption a{
+	text-align: center;
+	padding: 5px 10px;
+	border-radius: 2px;
+	display: inline-block;
+	background: #ed4e6e;
+	color: #fff;
+}
+.cs-style figure{
+	overflow: hidden;
+}
+.cs-style figure img{
+	-webkit-transition: -webkit-transform 0.4s;
+	-moz-transition: -moz-transform 0.4s;
+	transition: transform 0.4s;
+}
+.no-touch .cs-style figure:hover img,
+.cs-style figure.cs-hover img {
+	-webkit-transform: translateY(-50px);
+	-moz-transform: translateY(-50px);
+	-ms-transform: translateY(-50px);
+	transform: translateY(-50px);
+}
+.cs-style figcaption {
+	height: 80px;
+	width: 82%;
+	top: auto;
+	bottom: 0;
+	opacity: 0;
+	-webkit-transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+	-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+	transition: transform 0.4s, opacity 0.1s 0.3s;
+}
+.no-touch .cs-style figure:hover figcaption,
+.cs-style figure.cs-hover figcaption {
+	opacity: 1;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	-ms-transform: translateY(0px);
+	transform: translateY(0px);
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+	-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+	transition: transform 0.4s, opacity 0.1s;
+}
+.cs-style figcaption a {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}

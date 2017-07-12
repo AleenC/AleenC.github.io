@@ -1,0 +1,7 @@
+
+.move-box{width: 500px;height: 200px;text-align: center;margin: 0 auto;}
+.move-button{width: 80px;height: 30px;background: #fff;outline: none;}
+.gird{background: #ddd;width: 125px;height: 125px;float: left;margin-left: 85px;}
+.gird-box{float: right;margin-right: 85px;margin-left: 0;}
+.gird-a .gird-item{width: 20px;height: 20px;margin: 0 5px 5px 0;background: #09f;float: left;transition: transform 0.8s;}
+.gird-a .gird-item.is-moved{transform: translateX(206px);}
